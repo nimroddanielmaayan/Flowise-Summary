@@ -21,7 +21,7 @@
 - For self hosting, we'll probably need to use environment variables
 
 - Self hosting is a good option for clients that want a fully independent "self
-  hosted, open source" system
+  hosted, open source" system, possibly along with self-hosted n8n
 
 - Course URL:
   <https://www.youtube.com/watch?v=pUnKEKz-Mdg&list=PL4HikwTaYE0Gi60Xkc1VAZV6u1vrJiZLr&index=3>
