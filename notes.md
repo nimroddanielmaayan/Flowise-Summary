@@ -8,9 +8,8 @@
   or self hosting on any server we want
 
 - The Flowise cloud has an option for managing credentials, for several
-  editors\users, etc. So it might be a good option for white labeling. Also, the
-  licence probably requires using cloud hosting for white labeling (I need to
-  check the license)
+  editors\users, etc. Also, the licence probably requires using cloud hosting
+  for white labeling (I need to check the license)
 
 - The licence should be on GitHub
 
@@ -21,9 +20,11 @@
 - For self hosting, we'll probably need to use environment variables
 
 - Self hosting is a good option for clients that want a fully independent "self
-  hosted, open source" system, possibly along with self-hosted n8n
+  hosted, open source" system, which isn't n8n
+
+- Flowise doesn't have an advanced "front end" for chatbots
+
+- Flowise is a substitute for n8n - for now, I probably won't use it
 
 - Course URL:
   <https://www.youtube.com/watch?v=pUnKEKz-Mdg&list=PL4HikwTaYE0Gi60Xkc1VAZV6u1vrJiZLr&index=3>
-
-- (continue from video 3)
