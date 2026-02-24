@@ -4,6 +4,8 @@
 
 ### The Basics
 
+- KEEP THIS AS AN ARCHIVE, IN CASE I NEED FLOWISE IN THE FUTURE
+
 - Flowise is an open-source platform, with options for either paid cloud hosting
   or self hosting on any server we want
 
