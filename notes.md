@@ -4,7 +4,8 @@
 
 ### The Basics
 
-- KEEP THIS AS AN ARCHIVE, IN CASE I NEED FLOWISE IN THE FUTURE
+- Flowise is not an iPaaS (Integration Platforms as a Service). It's an
+  AI-specific application builder
 
 - Flowise is an open-source platform, with options for either paid cloud hosting
   or self hosting on any server we want
@@ -30,3 +31,21 @@
 
 - Course URL:
   <https://www.youtube.com/watch?v=pUnKEKz-Mdg&list=PL4HikwTaYE0Gi60Xkc1VAZV6u1vrJiZLr&index=3>
+
+- I need to check if Flowise features good chat UI customizations (like TypeBot)
+  or not
+
+- Flowise handles session IDs, conversational memory and RAG out of the box. If
+  user A and user B are talking to your bot, Flowise automatically tracks their
+  separate conversations, remembers the context, and stores the chat history in
+  its database (without needing to connect a third-party database node, like in
+  n8n)
+
+- Flowise is built directly on LangGraph. This allows us to build highly
+  complex, stateful multi-agent systems. We can create true "chains of thought"
+  where an agent gets stuck, loops back, tries a different tool, shares memory
+  with another agent, and iterates until a problem is solved
+
+- The term "prediction" in Flowise comes from the underlying mechanics of Large
+  Language Models (LLMs)—they generate text by predicting the most likely next
+  word (or token) based on your prompt
