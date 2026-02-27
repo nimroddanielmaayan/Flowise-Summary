@@ -4,6 +4,8 @@
 
 ### The Basics
 
+- LEAVE THIS FOR LATER. FOR NOW, N8N IS ENOUGH
+
 - Flowise is not an iPaaS (Integration Platforms as a Service). It's an
   AI-specific application builder
 
