@@ -4,8 +4,6 @@
 
 ### The Basics
 
-- LEAVE THIS FOR LATER. FOR NOW, N8N IS ENOUGH
-
 - Flowise is not an iPaaS (Integration Platforms as a Service). It's an
   AI-specific application builder
 
@@ -51,3 +49,22 @@
 - The term "prediction" in Flowise comes from the underlying mechanics of Large
   Language Models (LLMs)—they generate text by predicting the most likely next
   word (or token) based on your prompt
+
+### Features
+
+- Flowise has a built-in message history, for all users
+
+- Starter prompts\follow-up prompts: Lets the user start or continue the
+  conversation with pre-made, relevant questions (or questions pre-created
+  on-the-fly using AI)
+
+- Feedback: Allows the user to like\dislike responses
+
+- Lead form: Allows to ask user information before the chat starts (doesn't have
+  to be mandatory)
+
+- Speach to text and file uploads: Exist natively in the platform
+
+- Rate limiting: As another guardrail against user abuse
+
+-
