@@ -1,0 +1,165 @@
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.init({
+        chatflowid: "1deea59e-4159-49a0-b547-0e3af33a5cfd",
+        apiHost: "https://cloud.flowiseai.com",
+        chatflowConfig: {
+            /* Chatflow Config */
+        },
+        observersConfig: {
+            /* Observers Config */
+        },
+        theme: {
+            button: {
+                backgroundColor: '#3B81F6',
+                right: 20,
+                bottom: 20,
+                size: 48,
+                dragAndDrop: true,
+                iconColor: 'white',
+                customIconSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+                autoWindowOpen: {
+                    autoOpen: true,
+                    openDelay: 10,
+                    autoOpenOnMobile: true
+                }
+            },
+            tooltip: {
+                showTooltip: true,
+                tooltipMessage: 'ברוכים הבאים! 👋',
+                tooltipBackgroundColor: 'black',
+                tooltipTextColor: 'white',
+                tooltipFontSize: 16
+            },
+            customCSS: `
+								/* Make container RTL */
+    						.chatbot-container {
+        				direction: rtl !important;
+    						}
+
+								/* Target the Close Button and move it to the left */
+    						button[title="Close Chat"] {
+        				right: auto !important;
+        				left: 3% !important;
+    						}
+
+    						/* Mobile chat - make full screen */
+								@media (max-width: 768px) {
+						    [part="bot"] {
+        				right: auto !important;
+    							}
+								}
+
+								/* Desktop chat - add right margin */
+								@media (min-width: 769px) {
+						    [part="bot"] {
+        				right: 20px !important;
+    							}
+								}
+
+								/* Bot Messages - adjust layout */
+								.host-container {
+    						margin-right: 20px !important;
+								}
+
+								.chatbot-host-bubble {
+								margin-right: 5px !important;
+								}
+
+								/* User Messages - adjust layout */
+								.guest-container {
+								margin-left: 0 !important;
+								}
+
+								.chatbot-guest-bubble {
+								margin-left: 5px !important;
+								}
+
+								/* Rotate buttons 180 degrees */
+								.chatbot-button {
+								transform: rotateY(180deg) !important;
+								}
+
+								/* Fix List Layout for RTL */
+								.chatbot-host-bubble ul,
+								.chatbot-host-bubble ol {
+										padding-right: 1.5rem !important;
+										padding-left: 0 !important;
+										margin-top: 0.5rem !important;
+										margin-bottom: 0.5rem !important;
+								}
+
+								.chatbot-host-bubble li {
+										text-align: right !important;
+										margin-bottom: 0.25rem !important;
+								}
+
+								/* Fix User bubble lists just in case they type a list */
+								.chatbot-guest-bubble ul,
+								.chatbot-guest-bubble ol {
+										padding-right: 1.5rem !important;
+										padding-left: 0 !important;
+								}
+						`,
+            chatWindow: {
+                showTitle: true,
+                showAgentMessages: true,
+                title: 'בוט',
+                titleAvatarSrc: 'https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/svg/google-messages.svg',
+                welcomeMessage: 'ברוכים הבאים!',
+                errorMessage: 'הודעת שגיאה',
+                backgroundColor: '#ffffff',
+                backgroundImage: 'enter image path or link',
+                height: 700,
+                width: 400,
+                fontSize: 16,
+                starterPrompts: [
+                    "מה זה צ'אטבוט?",
+                    "מי אתה?"
+                ],
+                starterPromptFontSize: 15,
+                clearChatOnReload: false,
+                sourceDocsTitle: 'Sources:',
+                renderHTML: true,
+                botMessage: {
+                    backgroundColor: '#f7f8ff',
+                    textColor: '#303235',
+                    showAvatar: true,
+                    avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png'
+                },
+                userMessage: {
+                    backgroundColor: '#3B81F6',
+                    textColor: '#ffffff',
+                    showAvatar: true,
+                    avatarSrc: 'https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/usericon.png'
+                },
+                textInput: {
+                    placeholder: 'הקלידו כאן...',
+                    backgroundColor: '#ffffff',
+                    textColor: '#303235',
+                    sendButtonColor: '#3B81F6',
+                    maxChars: 100,
+                    maxCharsWarningMessage: 'נא להקליד עד 100 תווים.',
+                    autoFocus: true,
+                    sendMessageSound: true,
+                    sendSoundLocation: 'send_message.mp3',
+                    receiveMessageSound: true,
+                    receiveSoundLocation: 'receive_message.mp3'
+                },
+                feedback: {
+                    color: '#303235'
+                },
+                dateTimeToggle: {
+                    date: true,
+                    time: true
+                },
+                footer: {
+                    textColor: '#303235',
+                    text: 'תודה שבחרתם',
+                    company: 'מעיין דיגיטל',
+                    companyLink: 'https://digitalai.co.il/ai-chatbot/'
+                }
+            }
+        }
+    })
+</script>
