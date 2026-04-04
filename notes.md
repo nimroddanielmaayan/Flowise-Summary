@@ -5,8 +5,8 @@
 ### The Basics
 
 - Flowise is not an iPaaS (Integration Platforms as a Service). It's an
-  AI-specific application builder. It's focused on chat, image\audio processing,
-  multi-agent flows, and so on
+  AI-specific application\flow builder. It's focused on chat, image\audio
+  processing, multi-agent flows, chat state, chat features, and so on
 
 - Flowise is an open-source platform, with options for either paid cloud hosting
   or self hosting on any server we want
@@ -150,5 +150,3 @@
 - Unlike in n8n, we can't see the input\output of the current node on its left
   and right. Instead, Flowise relies on variables to carry information between
   nodes
-
--
