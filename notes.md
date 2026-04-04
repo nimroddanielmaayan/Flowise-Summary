@@ -135,3 +135,12 @@
 - The RAG record manager is important for managing the RAG data, avoiding
   duplicates, and so on. Without it, records will be duplicated unneccessarily,
   and this might cause problems
+
+## Agentflows
+
+- Agentflows are the only feature in Flowise which is "comparable" to an n8n
+  flow. The others (Chatflows\assistants) don't support _sequential_ automations
+  (like adding a row in Google Sheets after every message). So Agentflows are
+  the feature we will focus on
+
+-
