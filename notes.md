@@ -143,4 +143,12 @@
   (like adding a row in Google Sheets after every message). So Agentflows are
   the feature we will focus on
 
+- Unlike in n8n, Flowise has dedicated "flow state" which is tracked all across
+  the flow, and can be updated at any point. Flowise saves the messages in the
+  current conversation automatically in the flow state.
+
+- Unlike in n8n, we can't see the input\output of the current node on its left
+  and right. Instead, Flowise relies on variables to carry information between
+  nodes
+
 -

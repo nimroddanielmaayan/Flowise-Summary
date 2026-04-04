@@ -1,0 +1,60 @@
+<script>
+document.addEventListener('click', function(e) {
+    // 1. Identify your WordPress trigger button
+    if (e.target.id === 'button-hi-ai' || e.target.closest('#button-hi-ai')) {
+
+        // STOP THE JUMP
+        e.preventDefault();
+
+        // 2. Get the Flowise web component & its shadow root
+        const flowiseEl = document.querySelector('flowise-chatbot');
+        if (!flowiseEl || !flowiseEl.shadowRoot) {
+            console.warn("Flowise web component not found.");
+            return;
+        }
+        const shadow = flowiseEl.shadowRoot;
+
+        // 3. Open the chat bubble if it's currently closed
+        const bubbleBtn = shadow.querySelector('button.flowise-button');
+        const chatWindow = shadow.querySelector('.flowise-chatbot-container');
+
+        if (chatWindow && !chatWindow.classList.contains('open')) {
+            bubbleBtn?.click();
+        }
+
+        // 4. Wait for the window to open, then fill the input
+        setTimeout(() => {
+            const textarea = shadow.querySelector('textarea');
+
+            if (textarea) {
+                const textToFill = "היי, נעים להכיר!";
+
+                // Use the native setter to properly trigger React/Lit's internal state
+                const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+                    window.HTMLTextAreaElement.prototype, 'value'
+                ).set;
+                nativeInputValueSetter.call(textarea, textToFill);
+
+                textarea.dispatchEvent(new Event('input', { bubbles: true }));
+                textarea.dispatchEvent(new Event('change', { bubbles: true }));
+
+                // 5. Wait another 200ms and click Send
+                setTimeout(() => {
+                    // Flowise send button is typically the last button in the input row
+                    const sendBtn = shadow.querySelector('button[class*="send"]')
+                        ?? shadow.querySelector('.chat-input button:last-of-type');
+
+                    if (sendBtn && !sendBtn.disabled) {
+                        sendBtn.click();
+                        console.log("Flowise message sent automatically.");
+                    } else {
+                        console.warn("Send button not found or still disabled.");
+                    }
+                }, 200);
+            } else {
+                console.warn("Flowise textarea not found.");
+            }
+        }, 400); // Slightly longer delay than n8n to account for shadow DOM render
+    }
+});
+</script>

@@ -1,0 +1,75 @@
+<script>
+document.addEventListener('click', function(e) {
+    // 1. Identify your WordPress trigger button
+    if (e.target.id === 'button-hi-ai' || e.target.closest('#button-hi-ai')) {
+
+        // STOP THE JUMP: This prevents the # link from moving the page
+        e.preventDefault();
+
+        // Flowise injects its widget into a custom element called <flowise-chatbot>
+        const flowiseHost = document.querySelector('flowise-chatbot');
+
+        if (!flowiseHost || !flowiseHost.shadowRoot) {
+            console.error("Flowise chatbot embed not found on this page.");
+            return;
+        }
+
+        const shadow = flowiseHost.shadowRoot;
+
+        // 2. Open the chat if it's currently hidden
+        // In Flowise, if the textarea isn't in the DOM, the chat is closed.
+        let textarea = shadow.querySelector('textarea');
+        if (!textarea) {
+            // Click the main chat bubble button to open it
+            const bubbleBtn = shadow.querySelector('button');
+            if (bubbleBtn) {
+                bubbleBtn.click();
+            }
+        }
+
+        // 3. Wait for the window to open and render, then fill the text
+        setTimeout(() => {
+            textarea = shadow.querySelector('textarea');
+
+            if (textarea) {
+                const textToFill = "היי, נעים להכיר!"; // Hebrew text here
+
+                // Because Flowise uses a reactive framework, we need to bypass the JS value caching
+                // to trigger the state update properly.
+                const nativeTextAreaValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, "value").set;
+                nativeTextAreaValueSetter.call(textarea, textToFill);
+
+                // Notify the framework the text has changed so it enables the Send button
+                textarea.dispatchEvent(new Event('input', { bubbles: true }));
+                textarea.dispatchEvent(new Event('change', { bubbles: true }));
+
+                // 4. Wait another 200ms and simulate the Send action
+                setTimeout(() => {
+                    // Method A: Flowise responds natively to the "Enter" key on the textarea
+                    const enterEvent = new KeyboardEvent('keydown', {
+                        key: 'Enter',
+                        code: 'Enter',
+                        keyCode: 13,
+                        which: 13,
+                        bubbles: true,
+                        cancelable: true
+                    });
+                    textarea.dispatchEvent(enterEvent);
+
+                    // Method B: Fallback click on the send button
+                    const sendBtn = shadow.querySelector('button[type="submit"]') ||
+                                    (textarea.nextElementSibling && textarea.nextElementSibling.tagName === 'BUTTON' ? textarea.nextElementSibling : null);
+
+                    if (sendBtn && !sendBtn.disabled) {
+                        sendBtn.click();
+                    }
+
+                    console.log("Message sent automatically to Flowise.");
+                }, 200);
+            } else {
+                console.warn("Textarea not found inside Flowise. The chat may not have opened fast enough.");
+            }
+        }, 400); // 400ms gives the widget time to animate and render
+    }
+});
+</script>
